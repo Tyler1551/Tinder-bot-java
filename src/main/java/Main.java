@@ -14,7 +14,6 @@ public class Main {
     private static final WebDriver driver = new ChromeDriver();
     private static final JSONParser parser = new JSONParser();
     public static void main(String[] args) throws InterruptedException, IOException, ParseException {
-
 //        Set chromedriver location and access website
         System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
         driver.get("http://www.tinder.com/");
@@ -88,9 +87,8 @@ public class Main {
                 try {
                     driver.findElement(By.xpath("/html/body/div[2]/div/div/button[2]")).click();
                 } catch (Exception ioe) {
-                    driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/button[2]")).click();
                     try{
-                        like.click();
+                        driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/button[2]")).click();
                     } catch (Exception match){
                         driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/main/div[2]/div/div/div[1]/div/div[4]/button"));
                     }
