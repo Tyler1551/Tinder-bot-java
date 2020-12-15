@@ -43,7 +43,7 @@ public class Main {
         WebElement fb_log = driver.findElement(By.xpath("//*[@id=\"modal-manager\"]/div/div/div[1]/div/div[3]/span/div[2]/button"));
         fb_log.click();
 
-//        Store authentication credentials in a string
+//        Retrieve authentication credentials from credentials.json
         JSONObject credentials = (JSONObject) parser.parse(new FileReader("src/Main/java/credentials.json"));
 
 //        Store all windows in the arraylist and switch the the facebook login
