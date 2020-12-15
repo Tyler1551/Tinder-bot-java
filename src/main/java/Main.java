@@ -5,17 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.json.*;
-
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
-    private static ArrayList<String> windows = new ArrayList<>();
-    private static WebDriver driver = new ChromeDriver();
-    private static JSONParser parser = new JSONParser();
+    private static final ArrayList<String> windows = new ArrayList<>();
+    private static final WebDriver driver = new ChromeDriver();
+    private static final JSONParser parser = new JSONParser();
     public static void main(String[] args) throws InterruptedException, IOException, ParseException {
 
 //        Set chromedriver location and access website
@@ -99,7 +96,6 @@ public class Main {
                     }
                 }
             }
-
             Thread.sleep(250);
         }
     }
