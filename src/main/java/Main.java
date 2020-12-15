@@ -84,10 +84,10 @@ public class Main {
         while (true) {
             try {
                 like.click();
-            } catch (Exception e) {
+            } catch (Exception super_like) {
                 try {
                     driver.findElement(By.xpath("/html/body/div[2]/div/div/button[2]")).click();
-                } catch (Exception ioe) {
+                } catch (Exception add_to_home) {
                     try{
                         driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/button[2]")).click();
                     } catch (Exception match){
