@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class Main {
 
 //        Switch back to base window
         driver.switchTo().window(windows.get(0));
-        Thread.sleep(10000);
+        Thread.sleep(5000);
 
 //        Get passed misc popups (location, cookies, notifications etc)
         WebElement allow_location = driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div/div[3]/button[1]"));
@@ -90,6 +91,7 @@ public class Main {
                     try{
                         driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/button[2]")).click();
                     } catch (Exception match){
+                        System.out.println("Matched!");
                         driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/main/div[2]/div/div/div[1]/div/div[4]/button"));
                     }
                 }
