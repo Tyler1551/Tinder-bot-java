@@ -1,15 +1,23 @@
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.json.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
     private static ArrayList<String> windows = new ArrayList<>();
     private static WebDriver driver = new ChromeDriver();
+    private static JSONParser parser = new JSONParser();
+    public static void main(String[] args) throws InterruptedException, IOException, ParseException {
 
-    public static void main(String[] args) throws InterruptedException {
 //        Set chromedriver location and access website
         System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
         driver.get("http://www.tinder.com/");
@@ -25,7 +33,7 @@ public class Main {
 
     }
 
-    public static void login(WebDriver driver) throws InterruptedException {
+    public static void login(WebDriver driver) throws InterruptedException, IOException, ParseException {
 //        Find and select login buttons and choose facebook login
         WebElement login = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/main/div[1]/div/div/div/div/header/div/div[2]/div[2]/button/span"));
         login.click();
@@ -36,8 +44,7 @@ public class Main {
         fb_log.click();
 
 //        Store authentication credentials in a string
-        String user = "";
-        String pass = "";
+        JSONObject credentials = (JSONObject) parser.parse(new FileReader("src/Main/java/credentials.json"));
 
 //        Store all windows in the arraylist and switch the the facebook login
         for (String currentWindow : driver.getWindowHandles()) {
@@ -49,9 +56,9 @@ public class Main {
 
 //        find input fields and send credentials
         WebElement user_in = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/form/div/div[1]/div/input"));
-        user_in.sendKeys(user);
+        user_in.sendKeys((String) credentials.get("Username"));
         WebElement pass_in = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/form/div/div[2]/div/input"));
-        pass_in.sendKeys(pass);
+        pass_in.sendKeys((String) credentials.get("Password"));
 
         WebElement submit_log = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/form/div/div[3]/label[2]/input"));
         submit_log.click();
