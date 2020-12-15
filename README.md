@@ -4,5 +4,14 @@ Created using selenium in java
 ## Usage
 This application uses a facebook login
 
-To enter login details open credentials.json located in _src/Main/java_ in the appropriate fields and start the program from your IDE 
+To allow login, create a file named "credentials.json" in "_src/Main/java_" with the following:
 
+```
+{
+  "Username": "EMAIL",
+  "Password": "PASSWORD"
+}
+```
+Changing "Email" and "Password" to your login details
+
+You should then be able to run the application from your IDE such as eclipse or intelliJ
