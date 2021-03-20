@@ -18,12 +18,12 @@ public class Main {
 //        Set chromedriver location and access website
         System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
         driver.get("http://www.tinder.com/");
-
+        Thread.sleep(1000);
 //        Call login function
         login(driver);
 
 //        Find like button
-        WebElement like = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/main/div[1]/div/div/div[1]/div/div[2]/div[4]/button"));
+        WebElement like = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/main/div[1]/div/div/div[1]/div/div[2]/div[4]/button"));
 
 //        Auto swipe function
         auto_swipe(driver, like);
@@ -32,12 +32,12 @@ public class Main {
 
     public static void login(WebDriver driver) throws InterruptedException, IOException, ParseException {
 //        Find and select login buttons and choose facebook login
-        WebElement login = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/main/div[1]/div/div/div/div/header/div/div[2]/div[2]/button/span"));
+        WebElement login = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/main/div[1]/div/div/div/div/header/div/div[2]/div[2]/button"));
         login.click();
 
         Thread.sleep(500);
 
-        WebElement fb_log = driver.findElement(By.xpath("//*[@id=\"modal-manager\"]/div/div/div[1]/div/div[3]/span/div[2]/button"));
+        WebElement fb_log = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[1]/div/div[3]/span/div[2]/button"));
         fb_log.click();
 
 //        Retrieve authentication credentials from credentials.json
@@ -54,7 +54,7 @@ public class Main {
 //        find input fields and send credentials
         WebElement user_in = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/form/div/div[1]/div/input"));
         user_in.sendKeys((String) credentials.get("Username"));
-        WebElement pass_in = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/form/div/div[2]/div/input"));
+        WebElement pass_in = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/form/div/div[2]/div/div/input"));
         pass_in.sendKeys((String) credentials.get("Password"));
 
         WebElement submit_log = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/form/div/div[3]/label[2]/input"));
